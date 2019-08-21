@@ -16,19 +16,24 @@ public class Triangle {
 
     /**
      * Метод проверяет можно ли построить треугольник с такими длинами сторон.
-
      *
      * @param a Длина от точки a b.
      * @param b Длина от точки a c.
      * @param c Длина от точки b c.
      * @return
      */
-    private boolean exist(double a, double c, double b) {
-        return a + b < c || b + c < a || a + c < b ? false : true;
+    private boolean exist(double a, double b, double c) {
+        return a + b > c || b + c > a || a + c > b? true : false;
     }
 
     /**
      * Метод должен вычислить площадь треугольника.
+     *
+     * Формула.
+     *
+     * √ p *(p - a) * (p - b) * (p - c)
+     *
+     * где √ - корень квадратный, для извлечения корня использовать метод Math.sqrt().
      *
      * @return Вернуть площадь, если треугольник существует или -1.
      */
