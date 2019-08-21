@@ -12,7 +12,7 @@ public class TriangleTest {
         // Создаем объект треугольник.
         Triangle triangle = new Triangle();
         // Вычисляем площадь.
-        double result = triangle.area(0, 0, 0, 3, 10, 0);
+        double result = triangle.area(0, 0, 0, 3, 4, 0);
         // Задаем ожидаемый результат.
         double expected = 2D;
         //Проверяем результат и ожидаемое значение.
