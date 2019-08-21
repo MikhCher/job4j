@@ -13,9 +13,6 @@ public class Calculator {
      * @param second второй аргумент
      */
     public static void add(double first, double second) {
-        /**
-         * результат
-         */
         double result =  first + second;
         System.out.println(first + "+" + second + " = " + result);
     }
@@ -25,9 +22,6 @@ public class Calculator {
      * @param second второй аргумент
      */
     public static void div(double first, double second) {
-        /**
-         * результат
-         */
         double result =  first / second;
         System.out.println(first + "/" + second + " = " + result);
     }
@@ -37,9 +31,6 @@ public class Calculator {
      * @param second второй аргумент
      */
     public static void multiply(double first, double second) {
-        /**
-         * результат
-         */
         double result =  first * second;
         System.out.println(first + "*" + second + " = " + result);
     }
@@ -49,9 +40,6 @@ public class Calculator {
      * @param second второй аргумент
      */
     public static void subtrack(double first, double second) {
-        /**
-         * результат
-         */
         double result =  first - second;
         System.out.println(first + "-" + second + " = " + result);
     }
