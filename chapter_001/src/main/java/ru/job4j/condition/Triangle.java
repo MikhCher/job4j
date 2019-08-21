@@ -24,17 +24,11 @@ public class Triangle {
      * @return
      */
     private boolean exist(double a, double c, double b) {
-        return a + b < c || b + c < a ? false : true;
+        return a + b < c || b + c < a || a + c < b ? false : true;
     }
 
     /**
      * Метод должен вычислить площадь треугольника.
-     *
-     * Формула.
-     *
-     * √ p *(p - a) * (p - b) * (p - c)
-     *
-     * где √ - корень квадратный, для извлечения корня использовать метод Math.sqrt().
      *
      * @return Вернуть площадь, если треугольник существует или -1.
      */
