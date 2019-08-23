@@ -12,8 +12,9 @@ public class PrimeNumber {
             }
             if (k == 0 && i != 1) {
                 count++;
+            } else {
+                k = 0;
             }
-            else k = 0;
         }
         return count;
     }

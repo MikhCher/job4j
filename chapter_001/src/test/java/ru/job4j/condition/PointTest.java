@@ -6,7 +6,7 @@ import org.junit.Test;
 public class PointTest {
 
     @Test
-    public void distance(){
+    public void distance() {
         int x1 = 6, y1 = 7, x2 = 3, y2 = 5;
         double expected = 3.5;
         double out = Point.distance(x1, y1, x2, y2);
