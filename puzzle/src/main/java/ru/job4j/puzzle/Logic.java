@@ -75,6 +75,7 @@ public class Logic {
             if (table[i][0] == 1) {
                 for (int j = 1; j < table.length; j++) {
                     if (table[i][j] != 1) {
+                        result = false;
                         break;
                     }
                     result = true;
@@ -83,6 +84,7 @@ public class Logic {
             if (table[0][i] == 1) {
                 for (int j = 1; j < table.length; j++) {
                     if (table[j][i] != 1) {
+                        result = false;
                         break;
                     }
                     result = true;
