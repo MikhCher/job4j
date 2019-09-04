@@ -49,7 +49,7 @@ public class Calculator {
      * @param args аргументы
      */
     public static void main(String[] args) {
-        add(1, 1);  
+        add(1, 1);
         div(4, 2);
         multiply(2, 1);
         subtrack(10, 5);
