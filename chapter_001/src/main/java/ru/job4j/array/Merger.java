@@ -10,7 +10,7 @@ public class Merger {
             } else if (first[i] < second[i] && first[i] <= third[j - 1]) {
                 int tmp = third[j - 1];
                 third[j - 1] = first[i];
-                third[j] = tmp;
+                third[j] = tmp; 
                 third[j + 1] = second[i];
             } else if (second[i] < first[i] && second[i] >= third[j - 1]) {
                 third[i * 2] = second[i];
