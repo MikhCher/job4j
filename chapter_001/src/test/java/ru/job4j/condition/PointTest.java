@@ -30,4 +30,12 @@ public class PointTest {
         Point second = new Point(2, 2);
         second.info();
     }
+
+    @Test
+    public void when2PointsInDimensionalSpace() {
+        Point first = new Point(2,2,2);
+        Point second = new Point(1,2,2);
+        double result = first.distance3d(second);
+        assertThat(result, is(1D));
+    }
 }
