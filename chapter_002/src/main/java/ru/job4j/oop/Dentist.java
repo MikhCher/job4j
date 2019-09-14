@@ -1,13 +1,9 @@
 package ru.job4j.oop;
 
 public class Dentist extends Doctor {
-    public int price;
+    private int price;
 
-    public Dentist(String name, String surname, String education, boolean male, int price) {
-        this.name = name;
-        this.surname = surname;
-        this.education = education;
-        this.male = male;
+    public Dentist(int price) {
         this.price = price;
     }
 

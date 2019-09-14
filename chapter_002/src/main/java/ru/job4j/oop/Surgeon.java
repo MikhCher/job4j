@@ -1,13 +1,9 @@
 package ru.job4j.oop;
 
 public class Surgeon extends Doctor {
-    public int age;
+    private int age;
 
-    public Surgeon (String name, String surname, String education, boolean male, int age){
-        this.name = name;
-        this.surname = surname;
-        this.education = education;
-        this.male = male;
+    public Surgeon (int age){
         this.age = age;
     }
 

@@ -1,9 +1,9 @@
 package ru.job4j.oop;
 
 public class Profession {
-    public String name;
-    public String surname;
-    public String education;
+    private String name;
+    private String surname;
+    private String education;
 
     public Profession() {
     }

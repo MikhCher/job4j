@@ -1,15 +1,12 @@
 package ru.job4j.oop;
 
 public class Doctor extends Profession {
-    public boolean male;
+    private boolean male;
 
     public Doctor() {
     }
 
-    public Doctor (String name, String surname, String education, boolean male){
-        this.name = name;
-        this.surname = surname;
-        this.education = education;
+    public Doctor (boolean male){
         this.male = male;
     }
 

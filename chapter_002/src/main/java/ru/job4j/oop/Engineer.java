@@ -1,15 +1,12 @@
 package ru.job4j.oop;
 
 public class Engineer extends Profession {
-    public int experience;
+    private int experience;
 
     public Engineer() {
     }
 
-    public Engineer (String name, String surname, String education, int experience) {
-        this.name = name;
-        this.surname = surname;
-        this.education = education;
+    public Engineer (int experience) {
         this.experience = experience;
     }
 

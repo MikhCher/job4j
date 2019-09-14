@@ -1,13 +1,9 @@
 package ru.job4j.oop;
 
 public class Programmer extends Engineer {
-        public String level;
+    private String level;
 
-        public Programmer (String name, String surname, String education, int experience, String level){
-            this.name = name;
-            this.surname = surname;
-            this.education = education;
-            this.experience = experience;
+        public Programmer (String level){
             this.level = level;
         }
 
