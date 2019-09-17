@@ -14,11 +14,10 @@ public class Tracker {
 
     public boolean delete(String id) {
         boolean result = false;
-        Item[] deleted = new Item[--this.position];
         for (int i = 0; i < this.position; i++) {
             if (items[i].getId().equals(id)) {
-                System.arraycopy(items, 0, deleted, 0, i);
-                System.arraycopy(items, i + 1, deleted, i, this.position - 1);
+                System.arraycopy(items, i + 1, items, i, this.position - 1);
+                this.items[--position] = null;
                 result = true;
                 break;
             }
@@ -33,13 +32,18 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
         int coincidence = 0;
+        int j = 0;
+        Item[] counter = new Item[this.position];
         for (int i = 0; i < this.position; i++) {
              if (items[i].getName().equals(key)) {
-                 System.arraycopy(items, i, result, coincidence++, 1);
+                 counter[j] = items[i];
+                 coincidence++;
+                 j++;
              }
         }
+        Item[] result = new Item[coincidence];
+        System.arraycopy(counter, 0, result, 0, coincidence);
         return result;
     }
 
