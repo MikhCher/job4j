@@ -33,19 +33,33 @@ public class StartUI {
                     System.out.print("Enter new name: ");
                     Item item = new Item(scanner.nextLine());
                     item.setId(id);
-                    tracker.replace(id, item);
+                    if (tracker.replace(id, item)) {
+                        System.out.println("Item has been changed");
+                    } else {
+                        System.out.println("Something went wrong");
+                    }
                     break;
                 }
                 case 3: {
                     System.out.println("==== Delete item ====");
                     System.out.print("Enter number of item which you want to delete: ");
-                    tracker.delete(scanner.nextLine());
+                    if (tracker.delete(scanner.nextLine())) {
+                         System.out.println("Item has been deleted");
+                    } else {
+                        System.out.println("Something went wrong");
+                    }
                     break;
                 }
                 case 4: {
                     System.out.println("==== Find item by ID ====");
                     System.out.print("Enter ID: ");
-                    System.out.println("#" + tracker.findById(scanner.nextLine()).getId() + ", " + tracker.findById(scanner.nextLine()).getName());
+                    String id = scanner.nextLine();
+                    Item item = tracker.findById(id);
+                    if (item != null) {
+                        System.out.println("#" + tracker.findById(id).getId() + ", " + tracker.findById(id).getName());
+                    } else {
+                        System.out.println("There is no item with this id");
+                    }
                     break;
                 }
                 case 5: {
@@ -63,6 +77,9 @@ public class StartUI {
                 }
                 case 6: {
                     run = false;
+                    break;
+                }
+                default: {
                     break;
                 }
             }

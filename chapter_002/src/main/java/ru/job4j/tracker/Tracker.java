@@ -69,7 +69,7 @@ public class Tracker {
         return result;
     }
 
-    private String generateId () {
+    private String generateId() {
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
