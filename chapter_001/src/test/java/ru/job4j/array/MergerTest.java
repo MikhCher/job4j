@@ -7,8 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class MergerTest {
     @Test
-    public void merge()
-    {
+    public void merge() {
         Merger arr = new Merger();
         int[] first = new int[]{1, 3, 4, 6, 9, 10, 12, 14, 17, 18};
         int[] second = new int[]{2, 5, 7, 8, 11, 13, 15, 16, 19, 20};

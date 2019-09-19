@@ -5,7 +5,7 @@ public class Triangle {
     private Point second;
     private Point third;
 
-    public Triangle(Point fp, Point sp, Point tp){
+    public Triangle(Point fp, Point sp, Point tp) {
         this.first = fp;
         this.second = sp;
         this.third = tp;

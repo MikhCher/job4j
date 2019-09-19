@@ -1,7 +1,7 @@
 package ru.job4j.oop;
 
 public class Ball {
-    public void sing (){
+    public void sing() {
         System.out.println("Kolobok: *singing*");
     }
     public void talk() {

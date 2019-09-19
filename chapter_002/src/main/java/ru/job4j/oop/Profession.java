@@ -8,7 +8,7 @@ public class Profession {
     public Profession() {
     }
 
-    public Profession (String name, String surname, String education) {
+    public Profession(String name, String surname, String education) {
         this.name = name;
         this.surname = surname;
         this.education = education;

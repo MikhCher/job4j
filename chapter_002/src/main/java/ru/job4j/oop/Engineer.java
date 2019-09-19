@@ -6,7 +6,7 @@ public class Engineer extends Profession {
     public Engineer() {
     }
 
-    public Engineer (int experience) {
+    public Engineer(int experience) {
         this.experience = experience;
     }
 

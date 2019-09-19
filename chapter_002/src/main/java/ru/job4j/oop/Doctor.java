@@ -6,7 +6,7 @@ public class Doctor extends Profession {
     public Doctor() {
     }
 
-    public Doctor (boolean male){
+    public Doctor(boolean male) {
         this.male = male;
     }
 
