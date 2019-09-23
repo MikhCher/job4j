@@ -59,6 +59,9 @@ public class StartUI {
             System.out.println("There is no items with this name");
         }
     }
+    private static boolean exit() {
+        return false;
+    }
     public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
@@ -78,7 +81,7 @@ public class StartUI {
             } else if (select == 5) {
                 StartUI.findByName(input, tracker);
             } else {
-                run = false;
+                run = StartUI.exit();
             }
 
         }
