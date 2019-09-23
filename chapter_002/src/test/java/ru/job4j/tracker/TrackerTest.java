@@ -60,7 +60,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void WhenFindByNameThenReturnArrayOfItems() {
+    public void whenFindByNameThenReturnArrayOfItems() {
         Tracker tracker = new Tracker();
         Item item1 = new Item("TEST");
         Item item2 = new Item("test");
