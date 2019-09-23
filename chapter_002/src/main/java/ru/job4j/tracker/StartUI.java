@@ -3,8 +3,7 @@ package ru.job4j.tracker;
 public class StartUI {
     private void add(Input input, Tracker tracker) {
         System.out.println("==== Create a new item ====");
-        System.out.print("Enter name of item: ");
-        Item item = new Item(input.askStr(""));
+        Item item = new Item(input.askStr("Enter name of item: "));
         tracker.add(item);
     }
     private void show(Input input, Tracker tracker) {
@@ -16,10 +15,8 @@ public class StartUI {
     }
     private void edit(Input input, Tracker tracker) {
         System.out.println("==== Edit item ====");
-        System.out.print("Enter number of item which you want to edit: ");
-        String id = input.askStr("");
-        System.out.print("Enter new name: ");
-        Item item = new Item(input.askStr(""));
+        String id = input.askStr("Enter number of item which you want to edit: ");
+        Item item = new Item(input.askStr("Enter new name: "));
         item.setId(id);
         if (tracker.replace(id, item)) {
             System.out.println("Item has been changed");
@@ -29,8 +26,7 @@ public class StartUI {
     }
     private void delete(Input input, Tracker tracker) {
         System.out.println("==== Delete item ====");
-        System.out.print("Enter number of item which you want to delete: ");
-        if (tracker.delete(input.askStr(""))) {
+        if (tracker.delete(input.askStr("Enter number of item which you want to delete: "))) {
             System.out.println("Item has been deleted");
         } else {
             System.out.println("Something went wrong");
@@ -38,8 +34,7 @@ public class StartUI {
     }
     private void findById(Input input, Tracker tracker) {
         System.out.println("==== Find item by ID ====");
-        System.out.print("Enter ID: ");
-        String id = input.askStr("");
+        String id = input.askStr("Enter ID: ");
         Item item = tracker.findById(id);
         if (item != null) {
             System.out.println("#" + item.getId() + ", " + item.getName());
@@ -49,8 +44,7 @@ public class StartUI {
     }
     private void findByName(Input input, Tracker tracker) {
         System.out.println("==== Find items by name ====");
-        System.out.print("Enter name: ");
-        Item[] array = tracker.findByName(input.askStr(""));
+        Item[] array = tracker.findByName(input.askStr("Enter name: "));
         if (array[0] != null) {
             for (int i = 0; i < array.length; i++) {
                 System.out.println("#" + array[i].getId() + ", " + array[i].getName());
@@ -63,8 +57,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.print("Select: ");
-            int select = Integer.valueOf(input.askStr(""));
+            int select = Integer.valueOf(input.askStr("Select: "));
             if (select == 0) {
                 add(input, tracker);
             } else if (select == 1) {
