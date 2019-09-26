@@ -9,6 +9,6 @@ public class TriangleTest {
     @Test
     public void whenDrawTriangle() {
         Triangle triangle = new Triangle();
-        assertThat(triangle.draw(), is(new StringBuilder().append("  +  ").append(" + + ").append("+   +").append("+++++").toString()));
+        assertThat(triangle.draw(), is(new StringBuilder().append("  +  ").append("\n + + ").append("\n+   +").append("\n+++++").toString()));
     }
 }
