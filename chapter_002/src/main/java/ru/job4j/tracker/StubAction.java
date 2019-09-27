@@ -1,4 +1,4 @@
-/*package ru.job4j.tracker;
+package ru.job4j.tracker;
 
 public class StubAction implements UserActions {
     private boolean call = false;
@@ -17,4 +17,4 @@ public class StubAction implements UserActions {
     public boolean isCall() {
         return call;
     }
-}*/
+}
