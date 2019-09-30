@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -12,6 +14,8 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final PrintStream def = System.out;
 
     @Test
     public void whenAddItem() {
@@ -110,11 +114,16 @@ public class StartUITest {
         new StartUI().init(input, new Tracker(), new UserActions[] { action, new ExitAction() });
         assertThat(action.isCall(), is(true));
     }
+    @Before
+    public void loadOutput() {
+        System.setOut(new PrintStream(this.out));
+    }
+    @After
+    public void backOutput() {
+        System.setOut(this.def);
+    }
     @Test
     public void whenPrtMenu() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
         StubInput input = new StubInput(
                 new String[] {"0"}
         );
@@ -125,13 +134,9 @@ public class StartUITest {
                 .add("0. Stub action")
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
     }
     @Test
     public void whenCheckOutputOnShowAction() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
         Tracker tracker = new Tracker();
         Item item = new Item("fix bug");
         tracker.add(item);
@@ -141,13 +146,9 @@ public class StartUITest {
                 .add("#" + item.getId() + ", " + item.getName())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
     }
     @Test
     public void whenCheckOutputOnFindByNameAction() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
         Tracker tracker = new Tracker();
         Item item = new Item("fix bug");
         tracker.add(item);
@@ -157,6 +158,5 @@ public class StartUITest {
                 .add("#" +item.getId() + ", " + item.getName())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
     }
 }
