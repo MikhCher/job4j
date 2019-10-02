@@ -12,7 +12,7 @@ public class Tracker {
         return item;
     }
 
-    public boolean delete(String id) {
+    public boolean delete(String id) throws IllegalStateException {
         boolean result = false;
         for (int i = 0; i < this.position; i++) {
             if (items[i].getId().equals(id)) {
@@ -21,6 +21,9 @@ public class Tracker {
                 result = true;
                 break;
             }
+        }
+        if (!result) {
+            throw new IllegalStateException("There is no such ID");
         }
         return result;
     }
@@ -58,13 +61,16 @@ public class Tracker {
         return result;
     }
 
-    public boolean replace(String id, Item item) {
+    public boolean replace(String id, Item item) throws IllegalStateException {
         boolean result = false;
         for (int i = 0; i < this.position; i++) {
             if (items[i].getId().equals(id)) {
                 items[i] = item;
                 result = true;
             }
+        }
+        if(!result) {
+            throw new IllegalStateException("There is no such ID");
         }
         return result;
     }

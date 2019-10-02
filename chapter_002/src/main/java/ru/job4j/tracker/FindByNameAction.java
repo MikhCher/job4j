@@ -11,6 +11,10 @@ public class FindByNameAction implements UserActions {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         call = true;
+        if (tracker.findAll().length == 0) {
+            System.out.println("There are no any items. You should create at least one item.");
+            return true;
+        }
         Item[] array = tracker.findByName(input.askStr("Enter name: "));
         if (array.length != 0) {
             for (int i = 0; i < array.length; i++) {

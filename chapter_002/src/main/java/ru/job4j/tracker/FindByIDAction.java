@@ -11,6 +11,10 @@ public class FindByIDAction implements UserActions {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         call = true;
+        if (tracker.findAll().length == 0) {
+            System.out.println("There are no any items. You should create at least one item.");
+            return true;
+        }
         String id = input.askStr("Enter ID: ");
         Item item = tracker.findById(id);
         if (item != null) {

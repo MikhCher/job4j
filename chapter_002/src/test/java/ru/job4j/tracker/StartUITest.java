@@ -77,9 +77,8 @@ public class StartUITest {
     }
     @Test
     public void whenEdit() {
-        Random rm = new Random();
         StubInput input = new StubInput(
-                new String[] {"0", String.valueOf(rm.nextLong() + System.currentTimeMillis()), "Edit test", "1"}
+                new String[] {"0", "1"}
         );
         EditAction action = new EditAction();
         new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction() });
@@ -89,7 +88,7 @@ public class StartUITest {
     public void whenDelete() {
         Random rm = new Random();
         StubInput input = new StubInput(
-                new String[] {"0", String.valueOf(rm.nextLong() + System.currentTimeMillis()), "1"}
+                new String[] {"0", "1"}
         );
         DeleteAction action = new DeleteAction();
         new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction() });
@@ -99,7 +98,7 @@ public class StartUITest {
     public void whenFindByID() {
         Random rm = new Random();
         StubInput input = new StubInput(
-                new String[] {"0", String.valueOf(rm.nextLong() + System.currentTimeMillis()), "1"}
+                new String[] {"0", "1"}
         );
         FindByIDAction action = new FindByIDAction();
         new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction() });
@@ -108,7 +107,7 @@ public class StartUITest {
     @Test
     public void whenFindByName() {
         StubInput input = new StubInput(
-                new String[] {"0", "Random name", "1"}
+                new String[] {"0", "1"}
         );
         FindByNameAction action = new FindByNameAction();
         new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction() });
