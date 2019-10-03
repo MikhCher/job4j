@@ -1,18 +1,16 @@
 package ru.job4j.tracker;
 
-public class CreateAction implements UserActions {
+public class CreateAction extends BaseAction {
     private boolean call = false;
 
-    @Override
-    public String name() {
-        return "Create a new Item";
+    protected CreateAction(int key) {
+        super(key, "Create item");
     }
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
         call = true;
-        System.out.print("Enter name: ");
-        String name = input.askStr("");
+        String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
         return true;

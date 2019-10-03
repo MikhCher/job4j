@@ -1,11 +1,10 @@
 package ru.job4j.tracker;
 
-public class ShowAction implements UserActions {
+public class ShowAction extends BaseAction {
     private boolean call = false;
 
-    @Override
-    public String name() {
-        return "Show all Items";
+    public ShowAction(int key) {
+        super(key, "Show all items");
     }
 
     @Override
@@ -20,6 +19,7 @@ public class ShowAction implements UserActions {
         }
         return true;
     }
+
     public boolean isCall() {
         return call;
     }

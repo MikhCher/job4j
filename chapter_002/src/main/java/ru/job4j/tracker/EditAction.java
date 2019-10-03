@@ -1,11 +1,10 @@
 package ru.job4j.tracker;
 
-public class EditAction implements UserActions  {
+public class EditAction extends BaseAction  {
     private boolean call = false;
 
-    @Override
-    public String name() {
-        return "Edit Item";
+    public EditAction(int key) {
+        super(key, "Edit item");
     }
 
     @Override
@@ -30,6 +29,7 @@ public class EditAction implements UserActions  {
             System.out.println("Item has been changed");
         return true;
     }
+
     public boolean isCall() {
         return call;
     }
