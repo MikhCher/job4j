@@ -69,7 +69,7 @@ public class Tracker {
                 result = true;
             }
         }
-        if(!result) {
+        if (!result) {
             throw new IllegalStateException("There is no such ID");
         }
         return result;

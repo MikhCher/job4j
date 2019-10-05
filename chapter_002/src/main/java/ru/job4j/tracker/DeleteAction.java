@@ -23,7 +23,7 @@ public class DeleteAction extends BaseAction {
             } catch (IllegalStateException ise) {
                 id = input.askStr("There is no such ID, enter correct number: ");
             }
-        } while(invalid);
+        } while (invalid);
         System.out.println("Item has been deleted");
         return true;
     }

@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class EditAction extends BaseAction  {
+public class EditAction extends BaseAction {
     private boolean call = false;
 
     public EditAction(int key) {
@@ -22,10 +22,10 @@ public class EditAction extends BaseAction  {
                 item.setId(id);
                 tracker.replace(id, item);
                 invalid = false;
-            } catch (IllegalStateException ise){
+            } catch (IllegalStateException ise) {
                 id = input.askStr("There is no such ID, enter correct number: ");
             }
-        } while(invalid);
+        } while (invalid);
             System.out.println("Item has been changed");
         return true;
     }
