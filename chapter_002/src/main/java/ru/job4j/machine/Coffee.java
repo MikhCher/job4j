@@ -1,32 +1,21 @@
 package ru.job4j.machine;
 
 public class Coffee {
+    private int[] change = new int[100];
+
     public int[] changes(int value, int price) {
-        int[] valute = {0, 0, 0, 0, 0, 0};
-        int count = 0;
+        int index = 0;
         int difference = value - price;
         int nominal = 100;
-        int index = 0;
-        while (nominal >= 1) {
-            while (difference >= nominal) {
-                    difference = difference - nominal;
-                    valute[index]++;
-                    count++;
-            }
-            nominal = downgradeNominal(nominal);
-            index++;
-        }
-        nominal = 100;
-        int[] result = new int[count];
-        int j = 0;
-        for (index = 0; index < valute.length; index++) {
-            if (valute[index] != 0) {
-                for (int i = 0; i < valute[index]; i++, j++) {
-                    result[j] = nominal;
-                }
+        while (nominal != 0) {
+            while (difference - nominal >= 0) {
+                this.change[index++] = nominal;
+                difference -= nominal;
             }
             nominal = downgradeNominal(nominal);
         }
+        int[] result = new int[index];
+        System.arraycopy(this.change, 0, result, 0, index);
         return result;
     }
 
