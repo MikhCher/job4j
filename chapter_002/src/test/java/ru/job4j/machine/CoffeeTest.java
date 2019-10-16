@@ -11,7 +11,7 @@ public class CoffeeTest {
     public void changes() {
         Coffee coffee = new Coffee();
         int[] result = coffee.changes(50, 35);
-        int[] expect = {10 , 5};
+        int[] expect = {10, 5};
         assertThat(result, is(expect));
     }
 }
