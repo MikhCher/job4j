@@ -10,7 +10,7 @@ public class DeleteAction extends BaseAction {
     public boolean execute(Input input, Tracker tracker) {
         call = true;
         boolean invalid = true;
-        if (tracker.findAll().length == 0) {
+        if (tracker.findAll().isEmpty()) {
             System.out.println("There are no any items. You should create at least one item.");
             return true;
         }

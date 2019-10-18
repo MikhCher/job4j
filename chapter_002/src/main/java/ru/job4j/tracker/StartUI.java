@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 public class StartUI {
     public static void add(Input input, Tracker tracker) {
         System.out.println("==== Create a new item ====");
@@ -8,9 +10,9 @@ public class StartUI {
     }
     public static void show(Tracker tracker) {
         System.out.println("==== Show all items item ====");
-        Item[] array = tracker.findAll();
-        for (int i = 0; i < array.length; i++) {
-            System.out.println("#" + array[i].getId() + ", " + array[i].getName());
+        List<Item> array = tracker.findAll();
+        for (Item item : array) {
+            System.out.println("#" + item.getId() + ", " + item.getName());
         }
     }
     public static void edit(Input input, Tracker tracker) {
@@ -44,10 +46,10 @@ public class StartUI {
     }
     public static void findByName(Input input, Tracker tracker) {
         System.out.println("==== Find items by name ====");
-        Item[] array = tracker.findByName(input.askStr("Enter name: "));
-        if (array[0] != null) {
-            for (int i = 0; i < array.length; i++) {
-                System.out.println("#" + array[i].getId() + ", " + array[i].getName());
+        List<Item> array = tracker.findByName(input.askStr("Enter name: "));
+        if (!array.isEmpty()) {
+            for (Item item : array) {
+                System.out.println("#" + item.getId() + ", " + item.getName());
             }
         } else {
             System.out.println("There is no items with this name");
