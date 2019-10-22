@@ -1,24 +1,26 @@
 package ru.job4j.tracker;
 
+import java.awt.im.spi.InputMethod;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Tracker {
-    private Item[] items = new Item[100];
+    private List<Item> items = new ArrayList<>();
     private int position = 0;
 
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        items.add(item);
         return item;
     }
 
     public boolean delete(String id) throws IllegalStateException {
         boolean result = false;
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(id)) {
-                System.arraycopy(items, i + 1, items, i, this.position - 1);
-                this.items[--position] = null;
+        for (Item count : items) {
+            if (count.getId().equals(id)) {
                 result = true;
+                items.remove(count);
                 break;
             }
         }
@@ -28,33 +30,25 @@ public class Tracker {
         return result;
     }
 
-    public Item[] findAll() {
-        Item[] all = new Item[this.position];
-        System.arraycopy(items, 0, all, 0, this.position);
-        return all;
+    public List<Item> findAll() {
+        return items;
     }
 
-    public Item[] findByName(String key) {
-        int coincidence = 0;
-        int j = 0;
-        Item[] counter = new Item[this.position];
-        for (int i = 0; i < this.position; i++) {
-             if (items[i].getName().equals(key)) {
-                 counter[j] = items[i];
-                 coincidence++;
-                 j++;
-             }
+    public List<Item> findByName(String key) {
+        List<Item> rst = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                rst.add(item);
+            }
         }
-        Item[] result = new Item[coincidence];
-        System.arraycopy(counter, 0, result, 0, coincidence);
-        return result;
+        return rst;
     }
 
     public Item findById(String id) {
         Item result = null;
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(id)) {
-                result = items[i];
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                result = item;
                 break;
             }
         }
@@ -63,9 +57,9 @@ public class Tracker {
 
     public boolean replace(String id, Item item) throws IllegalStateException {
         boolean result = false;
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(id)) {
-                items[i] = item;
+        for (Item count : items) {
+            if (count.getId().equals(id)) {
+                count.setName(item.getName());
                 result = true;
             }
         }

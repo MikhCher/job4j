@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 public class FindByNameAction extends BaseAction {
     private boolean call = false;
 
@@ -9,14 +11,14 @@ public class FindByNameAction extends BaseAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         call = true;
-        if (tracker.findAll().length == 0) {
+        if (tracker.findAll().isEmpty()) {
             System.out.println("There are no any items. You should create at least one item.");
             return true;
         }
-        Item[] array = tracker.findByName(input.askStr("Enter name: "));
-        if (array.length != 0) {
-            for (int i = 0; i < array.length; i++) {
-                System.out.println("#" + array[i].getId() + ", " + array[i].getName());
+        List<Item> array = tracker.findByName(input.askStr("Enter name: "));
+        if (!array.isEmpty()) {
+            for (Item item : array) {
+                System.out.println("#" + item.getId() + ", " + item.getName());
             }
         } else {
             System.out.println("There is no items with this name");

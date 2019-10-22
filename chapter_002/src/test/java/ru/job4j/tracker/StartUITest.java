@@ -7,6 +7,7 @@ import org.junit.After;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import java.util.List;
 import java.util.StringJoiner;
 import java.util.Random;
 
@@ -23,7 +24,7 @@ public class StartUITest {
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
         StartUI.add(input, tracker);
-        Item created = tracker.findAll()[0];
+        Item created = tracker.findAll().get(0);
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
     }
@@ -45,8 +46,8 @@ public class StartUITest {
         String[] answers = {item.getId()};
         Input input = new StubInput(answers);
         StartUI.delete(input, tracker);
-        Item[] result = tracker.findAll();
-        assertThat(result.length, is(0));
+        List<Item> result = tracker.findAll();
+        assertTrue(result.isEmpty());
     }
     @Test
     public void whenExit() {
