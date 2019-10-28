@@ -61,7 +61,7 @@ public class TrackerTest {
         tracker.add(first);
         tracker.add(second);
         tracker.add(third);
-        List<Item>result = tracker.findAll();
+        List<Item> result = tracker.findAll();
         assertThat(result, is(expect));
     }
 

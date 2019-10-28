@@ -3,13 +3,13 @@ package ru.job4j.set;
 import java.util.*;
 
 public class SortUser {
-    public Set<User> sort (List<User> list) {
+    public Set<User> sort(List<User> list) {
         Set<User> set = new TreeSet<>();
         set.addAll(list);
         return set;
     }
 
-    public List<User> sortNameLength (List<User> list) {
+    public List<User> sortNameLength(List<User> list) {
         list.sort(
                 new Comparator<User>() {
                     @Override
@@ -21,7 +21,7 @@ public class SortUser {
         return list;
     }
 
-    public List<User> sortByAllFields (List<User> list) {
+    public List<User> sortByAllFields(List<User> list) {
         list.sort(
                 new Comparator<User>() {
                     @Override
