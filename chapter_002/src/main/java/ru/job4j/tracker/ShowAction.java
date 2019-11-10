@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ShowAction extends BaseAction {
     private boolean call = false;
@@ -10,14 +11,14 @@ public class ShowAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         call = true;
         List<Item> array = tracker.findAll();
         if (array.isEmpty()) {
-            System.out.println("There are no any items.");
+            output.accept("There are no any items.");
         }
         for (Item item : array) {
-            System.out.println("#" + item.getId() + ", " + item.getName());
+            output.accept("#" + item.getId() + ", " + item.getName());
         }
         return true;
     }
