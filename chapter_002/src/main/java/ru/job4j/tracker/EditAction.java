@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 public class EditAction extends BaseAction {
     private boolean call = false;
 
@@ -8,10 +10,10 @@ public class EditAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         call = true;
         if (tracker.findAll().isEmpty()) {
-            System.out.println("There are no any items. You should create at least one item.");
+            output.accept("There are no any items. You should create at least one item.");
             return true;
         }
         boolean invalid = true;
@@ -26,7 +28,7 @@ public class EditAction extends BaseAction {
                 id = input.askStr("There is no such ID, enter correct number: ");
             }
         } while (invalid);
-            System.out.println("Item has been changed");
+        output.accept("Item has been changed");
         return true;
     }
 

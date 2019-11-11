@@ -55,7 +55,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action });
         assertThat(action.isCall(), is(true));
     }
     @Test
@@ -64,7 +64,7 @@ public class StartUITest {
                 new String[] {"0", "Add test", "1"}
         );
         CreateAction action = new CreateAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
         assertThat(action.isCall(), is(true));
     }
     @Test
@@ -73,7 +73,7 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         ShowAction action = new ShowAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
         assertThat(action.isCall(), is(true));
     }
     @Test
@@ -82,27 +82,25 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         EditAction action = new EditAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
         assertThat(action.isCall(), is(true));
     }
     @Test
     public void whenDelete() {
-        Random rm = new Random();
         StubInput input = new StubInput(
                 new String[] {"0", "1"}
         );
         DeleteAction action = new DeleteAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
         assertThat(action.isCall(), is(true));
     }
     @Test
     public void whenFindByID() {
-        Random rm = new Random();
         StubInput input = new StubInput(
                 new String[] {"0", "1"}
         );
         FindByIDAction action = new FindByIDAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
         assertThat(action.isCall(), is(true));
     }
     @Test
@@ -111,7 +109,7 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         FindByNameAction action = new FindByNameAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action, new ExitAction(1) });
         assertThat(action.isCall(), is(true));
     }
     @Before
@@ -128,7 +126,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction(0);
-        new StartUI().init(input, new Tracker(), new UserActions[] {action });
+        new StartUI(System.out::println).init(input, new Tracker(), new UserActions[] {action });
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("     Menu.")
                 .add("0 : Stub action")
@@ -141,7 +139,7 @@ public class StartUITest {
         Item item = new Item("fix bug");
         tracker.add(item);
         ShowAction act = new ShowAction(0);
-        act.execute(new StubInput(new String[] {}), tracker);
+        act.execute(new StubInput(new String[] {}), tracker, System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("#" + item.getId() + ", " + item.getName())
                 .toString();
@@ -153,7 +151,7 @@ public class StartUITest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindByNameAction act = new FindByNameAction(0);
-        act.execute(new StubInput(new String[] {"fix bug"}), tracker);
+        act.execute(new StubInput(new String[] {"fix bug"}), tracker, System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("#" + item.getId() + ", " + item.getName())
                 .toString();
