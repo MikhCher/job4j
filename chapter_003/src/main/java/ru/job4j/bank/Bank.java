@@ -1,6 +1,8 @@
 package ru.job4j.bank;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Bank {
     private Map<User, ArrayList<Account>> map = new HashMap<>();
@@ -17,33 +19,25 @@ public class Bank {
 
     // добавить счёт пользователю.
     public void addAccountToUser(String passport, Account account) {
-        for (User user : map.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                this.map.get(user).add(account);
-                break;
-            }
+        User desiredUser = getUserByPassport(passport);
+        if (desiredUser != null) {
+            map.get(desiredUser).add(account);
         }
     }
 
     // удалить один счёт пользователя.
     public void deleteAccountFromUser(String passport, Account account) {
-        for (User user : map.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                this.map.get(user).remove(account);
-                break;
-            }
+        User desiredUser = getUserByPassport(passport);
+        if (desiredUser != null) {
+            Account desiredAccount = getAccount(passport, account.getReqs());
+            map.get(desiredUser).remove(desiredAccount);
         }
     }
 
     // получить список счетов для пользователя.
     public List<Account> getUserAccounts(String passport) {
-        List<Account> result = new ArrayList<>();
-        for (User user : map.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                result.addAll(this.map.get(user));
-            }
-        }
-        return result;
+        User desiredUser = getUserByPassport(passport);
+        return map.get(desiredUser);
     }
 
     // метод для перечисления денег с одного счёта на другой счёт:
@@ -61,16 +55,26 @@ public class Bank {
 
     private Account getAccount(String passport, String requisites) {
         Account result = null;
-        for (User user : this.map.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                for (Account account : this.map.get(user)) {
-                    if (account.getReqs().equals(requisites)) {
-                        result = account;
-                        break;
-                    }
-                }
-                break;
+        User desiredUser = getUserByPassport(passport);
+        if (desiredUser != null) {
+            List<Account> desiredAccount = map.get(desiredUser).stream()
+                .filter(account -> account.getReqs().equals(requisites))
+                .collect(Collectors.toList());
+            if (!desiredAccount.isEmpty()) {
+                result = desiredAccount.get(0);
             }
+        }
+        return result;
+    }
+
+    private User getUserByPassport(String passport) {
+        User result = null;
+        List<User> desiredUser = Stream.of(map.keySet())
+                .flatMap(Set::stream)
+                .filter(user -> user.getPassport().equals(passport))
+                .collect(Collectors.toList());
+        if (!desiredUser.isEmpty()) {
+            result = desiredUser.get(0);
         }
         return result;
     }
