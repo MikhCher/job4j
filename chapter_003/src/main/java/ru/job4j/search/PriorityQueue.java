@@ -12,9 +12,9 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        int count = this.tasks.size();
-        int index = 0;
-        for (Task source : this.tasks) {
+        var count = this.tasks.size();
+        var index = 0;
+        for (var source : this.tasks) {
             if (task.getPriority() < source.getPriority()) {
                 count = index;
                 break;
