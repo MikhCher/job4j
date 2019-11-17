@@ -7,8 +7,8 @@ public class SortDepartment {
         Set<Division> result = new TreeSet<>(new Comparator<Division>() {
             @Override
             public int compare(Division o1, Division o2) {
-                String[] codes1 = getCodes(o1);
-                String[] codes2 = getCodes(o2);
+                String[] codes1 = o1.getDepartment().split("/");
+                String[] codes2 = o2.getDepartment().split("/");
                 int result = 0;
                 int min = Math.min(codes1.length, codes2.length);
                 for (int codeIndex = 0; codeIndex < min; codeIndex++) {
@@ -24,6 +24,7 @@ public class SortDepartment {
                 return result;
             }
         });
+        fillGaps(divisions);
         result.addAll(divisions);
         return result;
     }
@@ -32,8 +33,8 @@ public class SortDepartment {
         Set<Division> result = new TreeSet<>(new Comparator<Division>() {
             @Override
             public int compare(Division o1, Division o2) {
-                String[] codes1 = getCodes(o1);
-                String[] codes2 = getCodes(o2);
+                String[] codes1 = o1.getDepartment().split("/");
+                String[] codes2 = o2.getDepartment().split("/");
                 int result = 0;
                 int min = Math.min(codes1.length, codes2.length);
                 for (int codeIndex = 0; codeIndex < min; codeIndex++) {
@@ -49,11 +50,32 @@ public class SortDepartment {
                 return result;
             }
         });
+        fillGaps(divisions);
         result.addAll(divisions);
         return result;
     }
 
-    private String[] getCodes(Division division) {
-        return division.getDepartment().split("/");
+    private void fillGaps(Set<Division> divisions) {
+        String[] codes;
+        int codeIndex = 0;
+        for (Division division : divisions) {
+            codes = division.getDepartment().split("/");
+            for (String suspect = codes[0]; codeIndex != codes.length - 1; suspect = suspect + "/" + codes[codeIndex]) {
+                int index = 0;
+                for (Division div : divisions) {
+                    if (suspect.equals(div.getDepartment())) {
+                        break;
+                    }
+                    if (index == divisions.size() - 1) {
+                        divisions.add(new Division(suspect));
+                        fillGaps(divisions);
+                        return;
+                    }
+                    index++;
+                }
+                codeIndex++;
+            }
+            codeIndex = 0;
+        }
     }
 }
