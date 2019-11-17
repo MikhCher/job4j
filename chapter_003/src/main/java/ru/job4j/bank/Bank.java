@@ -55,9 +55,12 @@ public class Bank {
 
     private Account getAccount(String passport, String requisites) {
         Account result = null;
-        User desiredUser = getUserByPassport(passport);
-        if (desiredUser != null) {
-            List<Account> desiredAccount = map.get(desiredUser).stream()
+        List<User> desiredUser = Stream.of(map.keySet())
+                .flatMap(Set::stream)
+                .filter(user -> user.getPassport().equals(passport))
+                .collect(Collectors.toList());
+        if (!desiredUser.isEmpty()) {
+            List<Account> desiredAccount = map.get(desiredUser.get(0)).stream()
                 .filter(account -> account.getReqs().equals(requisites))
                 .collect(Collectors.toList());
             if (!desiredAccount.isEmpty()) {
