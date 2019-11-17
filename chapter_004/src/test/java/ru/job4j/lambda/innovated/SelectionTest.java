@@ -17,8 +17,8 @@ public class SelectionTest {
         Student second = new Student("Pavel Doronin", 3);
         Student nullStudent2 = new Student();
         Student third = new Student("Denis Grigiriev", 4);
-        List<Student> result = select.levelOf(Arrays.asList(first, nullStudent1, second, nullStudent2, third), 3);
-        List<Student> expect = Arrays.asList(first, third);
+        List<Student> result = select.levelOf(List.of(first, nullStudent1, second, nullStudent2, third), 3);
+        List<Student> expect = List.of(first, third);
         assertThat(result, is(expect));
     }
 }

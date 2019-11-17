@@ -21,7 +21,7 @@ public class DiapasonCounterTest {
     public void whenQuadraticFunctionThenLinearResults() {
         DiapasonCounter function = new DiapasonCounter();
         List<Double> result = function.diapason(0, 4, x -> 4 * Math.pow(x, 2) + 4 * x + 1);
-        List<Double> expected = Arrays.asList(1D, 9D, 25D, 49D);
+        List<Double> expected = List.of(1D, 9D, 25D, 49D);
         assertThat(result, is(expected));
     }
 
@@ -29,7 +29,7 @@ public class DiapasonCounterTest {
     public void whenLogarithmicFThenLinearResults() {
         DiapasonCounter function = new DiapasonCounter();
         List<Double> result = function.diapason(1, 2, x -> 2 * Math.log(x));
-        List<Double> expected = Arrays.asList(0D);
+        List<Double> expected = List.of(0D);
         assertThat(result, is(expected));
     }
 }

@@ -18,7 +18,7 @@ public class ProfilesTest {
         Address secondAddress = new Address("St.Petersburg", "Gagarina street", 13, 176);
         Address thirdAddress = new Address("Moscow", "Voroshilova street", 3, 88);
         Address fourthAddress = new Address("Moscow", "Voroshilova street", 3, 93);
-        List<Profile> list = new ArrayList<>(Arrays.asList(
+        List<Profile> list = new ArrayList<>(List.of(
                 new Profile(firstAddress),
                 new Profile(similarAddress),
                 new Profile(secondAddress),
@@ -26,7 +26,7 @@ public class ProfilesTest {
                 new Profile(fourthAddress)
         ));
         List<Address> result = profiles.collect(list);
-        List<Address> expect = Arrays.asList(thirdAddress, fourthAddress, secondAddress, firstAddress);
+        List<Address> expect = List.of(thirdAddress, fourthAddress, secondAddress, firstAddress);
         assertThat(result, is(expect));
     }
 }
