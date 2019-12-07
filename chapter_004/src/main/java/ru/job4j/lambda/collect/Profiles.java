@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 
 public class Profiles {
     public List<Address> collect(List<Profile> profiles) {
-        Comparator<Address> comparator = ((o1, o2) ->
-        {
+        Comparator<Address> comparator = ((o1, o2) -> {
             int result = o1.getCity().compareTo(o2.getCity());
             if (result == 0) {
                 result = o1.getStreet().compareTo(o2.getStreet());

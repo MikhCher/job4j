@@ -15,8 +15,9 @@ public class DynamicArray<E> implements Iterable<E> {
     }
 
     public void add(E value) {
-        if (container.length == freePosition)
+        if (container.length == freePosition) {
             grow();
+        }
         container[freePosition++] = value;
         modCount++;
     }
