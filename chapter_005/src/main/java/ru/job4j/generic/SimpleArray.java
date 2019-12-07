@@ -22,7 +22,6 @@ public class SimpleArray<T> implements Iterable<T> {
             throw new ArrayIndexOutOfBoundsException();
         }
         array[index] = model;
-        freePosition++;
     }
 
     public void remove(int index) {
