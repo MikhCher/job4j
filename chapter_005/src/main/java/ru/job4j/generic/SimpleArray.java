@@ -4,13 +4,13 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SimpleArray<T> implements Iterable<T> {
-    private final int SIZE;
+    private final int size;
     private Object[] array;
     private int freePosition = 0;
 
-    public SimpleArray(final int SIZE) {
-        this.SIZE = SIZE;
-        this.array = new Object[SIZE];
+    public SimpleArray(final int size) {
+        this.size = size;
+        this.array = new Object[size];
     }
 
     public void add(T model) {
@@ -29,7 +29,7 @@ public class SimpleArray<T> implements Iterable<T> {
         if (freePosition <= index) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        System.arraycopy(array, index + 1, array, index, SIZE - index - 1);
+        System.arraycopy(array, index + 1, array, index, size - index - 1);
         freePosition--;
     }
 
@@ -47,7 +47,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
             @Override
             public boolean hasNext() {
-                return pointer < SIZE && pointer < freePosition;
+                return pointer < size && pointer < freePosition;
             }
 
             @Override

@@ -11,11 +11,11 @@ import static org.junit.Assert.*;
 
 public class SimpleArrayTest {
     private SimpleArray<Integer> sa;
-    private final int SIZE = 10;
+    private final int size = 10;
 
     @Before
     public void setUp() {
-        sa = new SimpleArray<Integer>(SIZE);
+        sa = new SimpleArray<Integer>(size);
     }
 
     @Test
@@ -66,11 +66,11 @@ public class SimpleArrayTest {
 
     @Test(expected = NoSuchElementException.class)
     public void whenOverflowedArrayThenGetException() {
-        for (int index = 0; index < SIZE; index++) {
+        for (int index = 0; index < size; index++) {
             sa.add(index);
         }
         Iterator<Integer> iter = sa.iterator();
-        for (int index = 0; index < SIZE + 1; index++) {
+        for (int index = 0; index < size + 1; index++) {
             iter.next();
         }
     }
