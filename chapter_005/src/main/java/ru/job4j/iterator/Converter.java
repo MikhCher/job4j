@@ -41,7 +41,7 @@ public class Converter {
                 if (!currentInternalIterator.hasNext() && !it.hasNext()) {
                     throw new NoSuchElementException();
                 }
-                while (!currentInternalIterator.hasNext()) {
+                if (!currentInternalIterator.hasNext()) {
                     currentInternalIterator = it.next();
                 }
                 return currentInternalIterator.next();
