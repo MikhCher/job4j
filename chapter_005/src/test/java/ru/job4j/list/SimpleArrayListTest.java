@@ -29,10 +29,7 @@ public class SimpleArrayListTest {
 
     @Test
     public void whenAddThreeElementsThenDeleteFirst() {
-        assertThat(list.get(0), is(3));
-        list.delete();
-        assertThat(list.get(0), is(2));
-        list.delete();
-        assertThat(list.get(0), is(1));
+        assertThat(list.delete(), is(2));
+        assertThat(list.delete(), is(1));
     }
 }
