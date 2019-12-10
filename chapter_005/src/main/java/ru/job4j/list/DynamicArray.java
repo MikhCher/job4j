@@ -7,8 +7,8 @@ import java.util.NoSuchElementException;
 
 public class DynamicArray<E> implements Iterable<E> {
     private Object[] container;
-    private int modCount = 0;
     private int freePosition = 0;
+    private boolean hasMode = false;
 
     public DynamicArray(int size) {
         container = new Object[size];
@@ -19,7 +19,7 @@ public class DynamicArray<E> implements Iterable<E> {
             grow();
         }
         container[freePosition++] = value;
-        modCount++;
+        hasMode = true;
     }
 
     public E get(int index) {
@@ -39,9 +39,9 @@ public class DynamicArray<E> implements Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
+        hasMode = false;
         return new Iterator<E>() {
             private int cursor = 0;
-            private final int expectedModCount = modCount;
 
             @Override
             public boolean hasNext() {
@@ -50,7 +50,7 @@ public class DynamicArray<E> implements Iterable<E> {
 
             @Override
             public E next() {
-                if (expectedModCount != modCount) {
+                if (hasMode) {
                     throw new ConcurrentModificationException();
                 }
                 if (!hasNext()) {
