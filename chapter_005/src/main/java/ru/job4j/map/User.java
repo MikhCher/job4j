@@ -12,4 +12,11 @@ public class User {
         this.children = children;
         this.birthday = birthday;
     }
+
+    @Override
+    public int hashCode() {
+        return 31 * ((name != null ? name.hashCode() : 0)
+                + children
+                + (birthday != null ? birthday.hashCode() : 0));
+    }
 }
