@@ -1,4 +1,4 @@
-package ru.job4j.set;
+package ru.job4j.map;
 
 import ru.job4j.map.User;
 

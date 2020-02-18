@@ -1,7 +1,10 @@
 package ru.job4j.set;
 
 import org.junit.Test;
+import ru.job4j.map.DefaultMap;
 import ru.job4j.map.User;
+
+import static org.junit.Assert.assertTrue;
 
 public class DefaultMapTest {
 
@@ -14,6 +17,8 @@ public class DefaultMapTest {
         def.add(first, 1);
         def.add(second, 2);
         def.printMap();
-    }
 
+        assertTrue(first.hashCode() == second.hashCode());
+        assertTrue(first.equals(second));
+    }
 }
