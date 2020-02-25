@@ -22,5 +22,4 @@ public class DefaultMapTest {
 
         assertThat(first.equals(second), is(true) );
     }
-
 }

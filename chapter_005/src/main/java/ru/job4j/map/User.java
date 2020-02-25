@@ -25,10 +25,17 @@ public class User {
 
         User user = (User) o;
         if (name != null ? !name.equals(user.name) : user.name != null
-        || children != user.children
-        || birthday != null ? !birthday.equals(user.birthday) : user.birthday != null) {
+                || children != user.children
+                || birthday != null ? !birthday.equals(user.birthday) : user.birthday != null) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * ((name != null ? name.hashCode() : 0)
+                + children
+                + (birthday != null ? birthday.hashCode() : 0));
     }
 }
