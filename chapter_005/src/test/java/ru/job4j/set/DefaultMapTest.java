@@ -7,7 +7,6 @@ import ru.job4j.map.User;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.MatcherAssert.*;
 
-
 public class DefaultMapTest {
 
     @Test
@@ -20,6 +19,6 @@ public class DefaultMapTest {
         def.add(second, 2);
         def.printMap();
 
-        assertThat(first.equals(second), is(true) );
+        assertThat(first.equals(second), is(true));
     }
 }
