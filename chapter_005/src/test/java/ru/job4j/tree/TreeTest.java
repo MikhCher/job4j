@@ -19,7 +19,8 @@ public class TreeTest {
                 is(true)
         );
 
-        assertFalse(tree.add(1,2));
+        assertFalse(tree.add(1, 2));
+        assertFalse(tree.isBinary());
     }
 
     @Test
@@ -30,5 +31,19 @@ public class TreeTest {
                 tree.findBy(7).isPresent(),
                 is(false)
         );
+        assertTrue(tree.isBinary());
+    }
+
+    @Test
+    public void whenParentNodeIncludesFromZeroToThreeChildrenThenCheckBinary() {
+        Tree<Integer> tree = new Tree<>(1);
+
+        assertTrue(tree.isBinary());
+        tree.add(1, 0);
+        assertTrue(tree.isBinary());
+        tree.add(1, 2);
+        assertTrue(tree.isBinary());
+        tree.add(1, 3);
+        assertFalse(tree.isBinary());
     }
 }
