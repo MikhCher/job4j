@@ -12,7 +12,7 @@ public class Analysis {
             String line = read.readLine();
             while (line != null) {
                 String[] data = line.split(" ");
-                if (Integer.valueOf(data[0]) >= 400) {
+                if (Integer.parseInt(data[0]) >= 400) {
                     if (start.isEmpty()) {
                         start = data[1];
                     }
