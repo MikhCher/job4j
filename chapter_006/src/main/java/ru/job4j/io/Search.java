@@ -9,12 +9,17 @@ import java.util.List;
 import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class Search implements FileVisitor<Path> {
-    private static List<Path> foundFiles = new ArrayList<>();
+    private static final List<Path> foundFiles = new ArrayList<>();
     private static String expansion;
 
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get(".");
-        search(start, ".js");
+        if (args.length == 0) {
+            throw new IllegalStateException("Root folder and expansion are null. Use java -jar Search.jar ROOT_FOLDER EXPANSION");
+        }
+        if (args.length == 1) {
+            throw new IllegalStateException("Root folder or expansion is null. Use java -jar Search.jar ROOT_FOLDER EXPANSION");
+        }
+        search(Path.of(args[0]), args[1]);
     }
 
     public static void setExpansion(String expansion) {
