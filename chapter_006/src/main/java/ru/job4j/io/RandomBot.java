@@ -1,5 +1,8 @@
 package ru.job4j.io;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,14 +10,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RandomBot {
-    private static File answers;
-    private static File log;
+
+    private static final Logger LOG = LoggerFactory.getLogger(RandomBot.class.getName());
 
     private static final List<String> answerList = new ArrayList<>();
 
     private static final String CONTINUE = "продолжить";
     private static final String STOP = "стоп";
     private static final String END = "закончить";
+
+    private static File answers;
+    private static File log;
 
     public RandomBot(final String answers, final String log) {
         RandomBot.answers = new File(answers);
@@ -54,7 +60,7 @@ public class RandomBot {
             out.write("Вы:  ");
             out.write(message);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error("Exception in writing data to log file", e);
         }
     }
 
@@ -67,7 +73,7 @@ public class RandomBot {
                 answerList.add(str);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error("Exception in loading answers" , e);
         }
     }
 
