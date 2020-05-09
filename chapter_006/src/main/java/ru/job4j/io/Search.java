@@ -9,7 +9,7 @@ import java.util.List;
 import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class Search implements FileVisitor<Path> {
-    private static final List<Path> foundFiles = new ArrayList<>();
+    private static List<Path> foundFiles;
     private static String expansion;
 
     public static void main(String[] args) throws IOException {
@@ -26,10 +26,12 @@ public class Search implements FileVisitor<Path> {
         Search.expansion = expansion;
     }
 
-    public static void search(Path root, String ext) throws IOException {
+    public static List<Path> search(Path root, String ext) throws IOException {
+        foundFiles = new ArrayList<>();
         setExpansion(ext);
         Files.walkFileTree(root, new Search());
         foundFiles.forEach(path -> System.out.println(path.toString()));
+        return foundFiles;
     }
 
     @Override
