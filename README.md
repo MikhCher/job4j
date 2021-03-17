@@ -1,37 +1,39 @@
-# job4j
+# Job4j
 
-В курсе производилась работа с веткамы git.
-начал курс в конце лета 2019, планирую закончить в первой половине 2020
+### **Learned technologies during this course**:
+- JDK, JRE, JVM
+- Program structure
+- Version Control System (VCS)
+- Building and Testing
+- Debug and Refactoring
+- Operators
+- Data Types
+- Classes and Objects
+   - **OOP**
+   - Class Relationships
+   - Interfaces 
+   - **Lambda Expressions** 
+   - Inner Classes
+   - equals() and hashCode()
+- **Exceptions**
+  - Types 
+  - Handling and Using
+- **Collections Framework**
+- Iterators
+- Sorting Algorithms
+- Generics
+- **Stream API**
+- **IO and NIO**
 
-    Java
-    Maven
-    jUnit
-    IDEA
-1. Базовый синтаксис языка
-    Понятие JVM, Byte code
-    Структура класса. Класс. Поля. Методы
-    Типы данных. Примитивные и ссылочные типы
-    Условия
-    Циклы
-    Массивы
-2. ООП
-    Наследование
-    Инкапсуляция
-    Полиморфизм
-    Абстрактные классы
-    Внутренние классы
-    Интерфейсы
-    Исключительные ситуации
-4. Система ввода/вывода, IO
-    Scanner
-    Buffer
-    Decorator
-5. Коллекции
-    Коллекции List
-    Коллекции Set
-    Коллекции Map
-    Коллекции Tree
-    Понятие "итератор"
-6. Алгоритмы обработки данных
-    Сортировка и поиск
-    Виды структур данных
+---
+### Development Tools:
+- Maven
+- Git
+- IntelliJ IDEA
+- TrackStudio
+---
+### Plugins and External Libraries:
+- jUnit
+- Log4j 2
+- Checkstyle
+- JavaDoc
